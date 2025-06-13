@@ -35,11 +35,12 @@ namespace NTierTodoApp.Controllers
 
         // TODO: تنفيذ إجراء لحذف المهمة
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult DeleteTask(int id)
         {
-            // TODO: استدعاء دالة حذف المهمة في TaskService
-
-            return RedirectToAction("Index");
+            _service.DeleteTask(id);
+            TempData["msg"] = "Task deleted ✔️";
+            return RedirectToAction(nameof(Index));
         }
     }
 }
