@@ -25,7 +25,17 @@
                     </form>
                 }
 
-                <!-- TODO: إضافة زر حذف المهمة -->
+                     <form asp-action="DeleteTask"
+                      asp-route-id="@item.Id"
+                      method="post"
+                      class="d-inline">
+                    @Html.AntiForgeryToken()
+                    <button type="submit"
+                            class="btn btn-sm btn-danger"
+                            onclick="return confirm('Delete this task?');">
+                        Delete
+                    </button>
+                </form>
             </li>
         }
     </ul>
